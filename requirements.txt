@@ -8,3 +8,4 @@ mailbox==0.4
 MarkupSafe==2.1.2
 six==1.16.0
 Werkzeug==2.3.4
+mailbox
