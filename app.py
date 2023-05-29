@@ -22,8 +22,11 @@ def extract_emails_from_mbox(mbox_file):
 
 @app.route('/api/emails')
 def get_emails():
+    print(os.path.abspath(__file__))
+    print(os.getcwd())
     base_dir = os.path.dirname(os.path.abspath(__file__))
     mbox_file_path = os.path.join(base_dir, 'unix_email.mbox')
+    print(mbox_file_path)
 #     mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
     unique_emails = extract_emails_from_mbox(mbox_file_path)
     print(unique_emails)  # Print the emails to the console
