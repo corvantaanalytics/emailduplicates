@@ -22,18 +22,17 @@ def extract_emails_from_mbox(mbox_file):
 
 @app.route('/api/emails')
 def get_emails():
-    print("File path",os.path.abspath(__file__))
-    print("directory path",os.getcwd())
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    mbox_file_path = os.path.join(base_dir, 'unix_email.mbox')
-    print(mbox_file_path)
+    print(os.path.join(os.path.dirname(__file__))
 #     mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
+    mbox_file_path = os.path.join(os.path.dirname(__file__), 'unix_email.mbox')
+    print(mbox_file_path)
     unique_emails = extract_emails_from_mbox(mbox_file_path)
     print(unique_emails)  # Print the emails to the console
     return jsonify(emails=unique_emails)
 
 if __name__ == '__main__':
-    mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
+    mbox_file_path = os.path.join(os.path.dirname(__file__), 'unix_email.mbox')
+#     mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
     unique_emails = extract_emails_from_mbox(mbox_file_path)
     print(unique_emails)  # Print the emails to the console
     app.run(debug=True)
