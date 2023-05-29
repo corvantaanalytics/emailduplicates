@@ -25,7 +25,7 @@ def get_emails():
     print(os.path.join(os.path.dirname(__file__)))
     mbox_file_path = 'unix_email.mbox'
 #     mbox_file_path = os.path.join(os.path.dirname(__file__), 'unix_email.mbox')
-    print(mbox_file_path)
+#     print(mbox_file_path)
     unique_emails = extract_emails_from_mbox(mbox_file_path)
     print(unique_emails)  # Print the emails to the console
     return jsonify(emails=unique_emails)
