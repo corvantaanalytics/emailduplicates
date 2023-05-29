@@ -1,4 +1,5 @@
 import re
+import os
 import mailbox
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -21,7 +22,9 @@ def extract_emails_from_mbox(mbox_file):
 
 @app.route('/api/emails')
 def get_emails():
-    mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    mbox_file_path = os.path.join(base_dir, 'unix_email.mbox')
+#     mbox_file_path = 'unix_email.mbox'  # Replace with the actual path to your .mbox file
     unique_emails = extract_emails_from_mbox(mbox_file_path)
     print(unique_emails)  # Print the emails to the console
     return jsonify(emails=unique_emails)
